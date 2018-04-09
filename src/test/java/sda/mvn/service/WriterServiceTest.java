@@ -17,13 +17,34 @@ public class WriterServiceTest {
     public void testOneName() {
         Assert.assertEquals("hello greeting not correct",
                 writerService.write("gulci"),
-                "Hello, gulci!");
+                "Hello, gulci.");
+    }
+
+    @Test
+    public void testNullName() {
+        Assert.assertEquals("empty greeting not correct",
+                writerService.write(null),
+                "Hello, my friend.");
+    }
+
+    @Test
+    public void testCapitalizedName() {
+        Assert.assertEquals("greeting not in capital letters",
+                writerService.write("GULCI"),
+                "HELLO, GULCI!");
     }
 
     @Test
     public void testEmptyName() {
-        Assert.assertEquals("empty greeting not correct",
-                writerService.write(null),
-                "Hello, my friend!");
+        Assert.assertEquals("empty name not displayed correctly",
+                writerService.write(""),
+                "Hello, my friend.");
+    }
+
+    @Test
+    public void testBlankName() {
+        Assert.assertEquals("blank name not displayed correctly",
+                writerService.write("   "),
+                "Hello, my friend.");
     }
 }
