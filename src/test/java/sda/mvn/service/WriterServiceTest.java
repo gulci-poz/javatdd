@@ -47,4 +47,18 @@ public class WriterServiceTest {
                 writerService.write("   "),
                 "Hello, my friend.");
     }
+
+    @Test
+    public void testNames() {
+        Assert.assertEquals("not all capitalized names not displayed correctly",
+                writerService.write("Jan, ANNA, kasia"),
+                "Hello, Jan, ANNA and kasia.");
+    }
+
+    @Test
+    public void testCapitalizedNames() {
+        Assert.assertEquals("all capitalized names not displayed correctly",
+                writerService.write("JAN, ANNA, KASIA"),
+                "HELLO, JAN, ANNA and KASIA!");
+    }
 }

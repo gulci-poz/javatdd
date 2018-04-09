@@ -17,7 +17,38 @@ public class WriterService {
     }
 
     private static String content(String name) {
-        return StringUtils.isBlank(name) ? "my friend" : name;
+        // todo try with lambdas
+
+        String content;
+
+        if (StringUtils.isBlank(name)) {
+            content = "my friend";
+        } else {
+            String[] names = name.split(", ");
+            StringBuilder andString = new StringBuilder();
+
+            if (names.length > 1) {
+                for (int i = 0; i < names.length; i++) {
+                    if (i == names.length - 1) {
+                        // before last name
+                        andString.append(" and ");
+                    } else if (i != 0) {
+                        // before each non-first and non-last name
+                        andString.append(", ");
+                    }
+                    // in all cases we want a name
+                    andString.append(names[i]);
+                }
+
+                content = andString.toString();
+            } else {
+                // one name
+                content = name;
+            }
+
+        }
+
+        return content;
     }
 
     private static String suffix(String name) {
@@ -25,6 +56,7 @@ public class WriterService {
     }
 
     private static boolean isCapitalizedName(String name) {
+        // blanks and comas are copied in toUpperCase()
         return (StringUtils.isNotBlank(name) && name.toUpperCase().equals(name));
     }
 }
