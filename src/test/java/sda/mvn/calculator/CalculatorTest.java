@@ -1,16 +1,19 @@
 package sda.mvn.calculator;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CalculatorTest {
 
-    private static Calculator calculator;
+    // pattern: given - (when) - then
+    // @BeforeClass - method must be static, before class instantiation
 
-    @BeforeClass
-    public static void prepareTests() {
-        calculator = new Calculator();
+    private Calculator calculator;
+
+    @Before
+    public void prepareTests() {
+        this.calculator = new Calculator();
     }
 
     @Test
