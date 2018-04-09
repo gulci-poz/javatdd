@@ -25,19 +25,21 @@ public class WriterService {
             content = "my friend";
         } else {
             String[] names = name.split(", ");
-            StringBuilder andString = new StringBuilder();
 
             if (names.length > 1) {
+                StringBuilder andString = new StringBuilder();
+
                 for (int i = 0; i < names.length; i++) {
-                    if (i == names.length - 1) {
-                        // before last name
+                    // in all cases we want to append the name
+                    andString.append(names[i]);
+
+                    if (i == names.length - 2) {
+                        // after second to last
                         andString.append(" and ");
-                    } else if (i != 0) {
-                        // before each non-first and non-last name
+                    } else if (i != names.length - 1) {
+                        // after each name, except the second to last and the last
                         andString.append(", ");
                     }
-                    // in all cases we want a name
-                    andString.append(names[i]);
                 }
 
                 content = andString.toString();
@@ -45,7 +47,6 @@ public class WriterService {
                 // one name
                 content = name;
             }
-
         }
 
         return content;
