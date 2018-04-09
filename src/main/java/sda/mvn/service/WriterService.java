@@ -30,7 +30,7 @@ public class WriterService {
             content = "my friend";
         } else {
             content = name.contains(",") ?
-                    name.replaceAll("(,\\s?)(\\w+$)", " and $2") : name;
+                    name.replaceAll("(,\\s*)(\\w+$)", " and $2") : name;
         }
 
         return content;
