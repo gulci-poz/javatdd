@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class StringCalculatorTest {
 
-    StringCalculator stringCalculator;
+    private StringCalculator stringCalculator;
 
     @Before
     public void initializeTests() {
