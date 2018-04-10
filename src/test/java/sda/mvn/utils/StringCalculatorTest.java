@@ -15,12 +15,12 @@ public class StringCalculatorTest {
 
     @Test
     public void sumStringTest() {
-        Assert.assertEquals("not adding properly", 102, stringCalculator.sumString("99,  3"));
+        Assert.assertEquals("not adding properly", 102, stringCalculator.sumString("99;  3"));
         Assert.assertEquals("not adding properly", 21, stringCalculator.sumString("4, 17"));
-        Assert.assertEquals("not adding properly", 28, stringCalculator.sumString("21,7"));
+        Assert.assertEquals("not adding properly", 28, stringCalculator.sumString("21;7"));
         Assert.assertEquals("not adding properly",
                 428,
-                stringCalculator.sumString("21,7, 43,    34,  323")
+                stringCalculator.sumString("21;7, 43,    34;  323")
         );
     }
 
