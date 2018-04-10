@@ -8,7 +8,7 @@ public class StringCalculator {
 
     public int sumString(String text) {
         return StringUtils.isBlank(text) ? 0 :
-                Arrays.stream(text.replaceAll("\\s*([,;])\\s*", "$1").split("[,;]"))
+                Arrays.stream(StringUtils.deleteWhitespace(text).split("[,;]"))
                         .mapToInt(Integer::valueOf)
                         .sum();
     }
