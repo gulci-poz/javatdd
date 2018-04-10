@@ -14,7 +14,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void sumStringTest() {
+    public void sumStringMultipleNumbersAndWhitespacesTest() {
         Assert.assertEquals("not adding properly", 102, stringCalculator.sumString("99;  3"));
         Assert.assertEquals("not adding properly", 21, stringCalculator.sumString("4, 17"));
         Assert.assertEquals("not adding properly", 28, stringCalculator.sumString("21;7"));
@@ -22,6 +22,11 @@ public class StringCalculatorTest {
                 428,
                 stringCalculator.sumString("21;7, 43,    34;  323")
         );
+    }
+
+    @Test
+    public void sumStringOneNumber() {
+        Assert.assertEquals(5, stringCalculator.sumString("5"));
     }
 
     @Test
