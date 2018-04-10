@@ -51,14 +51,14 @@ public class WriterServiceTest {
     @Test
     public void testNames() {
         Assert.assertEquals("not all capitalized names not displayed correctly",
-                writerService.write("Jan, ANNA, kasia"),
+                writerService.write("Jan,ANNA,   kasia"),
                 "Hello, Jan, ANNA and kasia.");
     }
 
     @Test
     public void testCapitalizedNames() {
         Assert.assertEquals("all capitalized names not displayed correctly",
-                writerService.write("JAN, ANNA, KASIA"),
-                "HELLO, JAN, ANNA and KASIA!");
+                writerService.write("JAN,   ANNA,KASIA,  WOJTEK"),
+                "HELLO, JAN, ANNA, KASIA AND WOJTEK!");
     }
 }
