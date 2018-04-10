@@ -17,8 +17,8 @@ public class StringCalculatorTest {
     public void sumStringTest() {
         Assert.assertEquals(
                 "not adding properly",
-                stringCalculator.sumString("2, 3"),
-                5
+                stringCalculator.sumString("99,  3"),
+                102
         );
     }
 }
