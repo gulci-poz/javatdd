@@ -18,4 +18,8 @@ public class Bookstore {
     public void add(Book book) {
         books.add(book);
     }
+
+    public void updateTitle(Book book, String title) {
+        books.get(books.indexOf(book)).setTitle(title);
+    }
 }

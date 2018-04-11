@@ -1,5 +1,6 @@
 package sda.mvn.bookstore.cucumber;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -37,5 +38,15 @@ public class BookstoreSteps {
     @Then("^Book author is JRR Tolkien$")
     public void bookAuthorIsJRRTolkien() {
         Assert.assertEquals("J.R.R. Tolkien", bookstore.getBooks().get(0).getAuthor());
+    }
+
+    @And("^I update title of the Book$")
+    public void iUpdateTitleOfTheBook() {
+        bookstore.updateTitle(book, "Silmarilion");
+    }
+
+    @Then("^Title of the book has changed$")
+    public void titleOfTheBookHasChanged() {
+        Assert.assertEquals("Silmarilion", bookstore.getBooks().get(0).getTitle());
     }
 }
