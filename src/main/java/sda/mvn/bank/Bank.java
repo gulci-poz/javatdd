@@ -18,11 +18,11 @@ public class Bank {
             return false;
         }
 
-        int oldNumberofUsers = numberOfUsers();
+        int oldNumberOfUsers = numberOfUsers();
 
         database.put(bankUser, new ArrayList<>());
 
-        return oldNumberofUsers + 1 == numberOfUsers();
+        return oldNumberOfUsers + 1 == numberOfUsers();
     }
 
     public List<BankAccount> getAccountsOf(BankUser bankUser) {
