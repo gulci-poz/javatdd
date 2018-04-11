@@ -20,9 +20,9 @@ public class StringCalculatorSteps {
         this.stringCalculator = new StringCalculator();
     }
 
-    @And("^I pass single number value$")
-    public void I_pass_single_number_value() {
-        this.value = "5";
+    @And("^I pass (.*) value$")
+    public void I_pass_single_number_value(String text) {
+        this.value = text;
     }
 
     @When("^I trigger calculate function$")
@@ -30,48 +30,13 @@ public class StringCalculatorSteps {
         this.result = stringCalculator.sumString(value);
     }
 
-    @Then("^I get 5 as a result$")
-    public void I_get_5_as_a_result() {
-        Assert.assertEquals(5, this.result);
+    @Then("^I get (.*) as a result$")
+    public void I_get_5_as_a_result(int passedResult) {
+        Assert.assertEquals(passedResult, this.result);
     }
 
-    @And("^I pass null value$")
+    @And("^I pass value null$")
     public void I_pass_null_value() {
         this.value = null;
-    }
-
-    @Then("^I get 0 as a result$")
-    public void I_get_0_as_a_result() {
-        Assert.assertEquals(0, this.result);
-    }
-
-    @And("^I pass an empty value$")
-    public void I_pass_an_empty_value() {
-        this.value = "";
-    }
-
-    @And("^I pass multiple values$")
-    public void iPassMultipleValues() {
-        this.value = "3,4,5";
-    }
-
-    @Then("^I get 12 as a result$")
-    public void iGetAsAResult() {
-        Assert.assertEquals(12, this.result);
-    }
-
-    @And("^I pass multiple values containing multiple spaces between them$")
-    public void iPassMultipleValuesContainingMultipleSpacesBetweenThem() {
-        this.value = "3, 4,   5";
-    }
-
-    @And("^I pass multiple values containing multiple delimiters side-by-side$")
-    public void iPassMultipleValuesContainingMultipleDelimitersSideBySide() {
-        this.value = "3, 4,,; 5";
-    }
-
-    @And("^I pass multiple values containing multiple delimiters side-by-side with multiple whitespaces$")
-    public void iPassMultipleValuesContainingMultipleDelimitersSideBySideWithMultipleWhitespaces() {
-        this.value = "3,     4   ,,; 5";
     }
 }

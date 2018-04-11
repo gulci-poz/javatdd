@@ -1,42 +1,20 @@
 Feature:
 
-  Scenario: I can calculate single number
-    Given I initialize stringCalculator
-    And I pass single number value
-    When I trigger calculate function
-    Then I get 5 as a result
-
   Scenario: I can calculate null number
     Given I initialize stringCalculator
-    And I pass null value
+    And I pass value null
     When I trigger calculate function
 
-  Scenario:
+  Scenario Outline: I can calculate multiple values
     Given I initialize stringCalculator
-    And I pass an empty value
+    And I pass <value> value
     When I trigger calculate function
-    Then I get 0 as a result
-
-  Scenario:
-    Given I initialize stringCalculator
-    And I pass multiple values
-    When I trigger calculate function
-    Then I get 12 as a result
-
-  Scenario:
-    Given I initialize stringCalculator
-    And I pass multiple values containing multiple spaces between them
-    When I trigger calculate function
-    Then I get 12 as a result
-
-  Scenario:
-    Given I initialize stringCalculator
-    And I pass multiple values containing multiple delimiters side-by-side
-    When I trigger calculate function
-    Then I get 12 as a result
-
-  Scenario:
-    Given I initialize stringCalculator
-    And I pass multiple values containing multiple delimiters side-by-side with multiple whitespaces
-    When I trigger calculate function
-    Then I get 12 as a result
+    Then I get <result> as a result
+    Examples:
+      | value         | result |
+      | 3,;  4,;;   5 | 12     |
+      | 3,;4;,5       | 12     |
+      | 3, 4,   5     | 12     |
+      | 3,4,5         | 12     |
+      | 5             | 5      |
+      |               | 0      |
