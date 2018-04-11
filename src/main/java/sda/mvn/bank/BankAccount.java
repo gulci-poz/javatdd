@@ -5,10 +5,11 @@ import java.util.Objects;
 public class BankAccount {
 
     private String id;
+    private String type;
     private int ammount;
 
-    public BankAccount(String id) {
-        this.id = id;
+    public BankAccount(String type) {
+        this.type = type;
     }
 
     public String getId() {
@@ -17,6 +18,14 @@ public class BankAccount {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getAmmount() {
