@@ -1,8 +1,8 @@
-package sda.mvn.utils.cucumber;
+package sda.mvn.bookstore.cucumber;
 
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-public class SpringCalculatorRunner {
+public class BookstoreRunner {
 }
