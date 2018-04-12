@@ -1,46 +1,36 @@
 package sda.mvn.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Bank {
 
-    private Map<BankUser, List<BankAccount>> database;
+    private BankDatabase bankDatabase;
 
-    public Bank() {
-        this.database = new HashMap<>();
+    public Bank(BankDatabase bankDatabase) {
+        this.bankDatabase = bankDatabase;
+    }
+
+    public boolean deposit(String accountType, int amount) {
+        return bankDatabase.deposit(accountType, amount);
     }
 
     public boolean addBankUser(BankUser bankUser) {
-        if (database.containsKey(bankUser)) {
-            return false;
-        }
-
-        int oldNumberOfUsers = numberOfUsers();
-
-        database.put(bankUser, new ArrayList<>());
-
-        return oldNumberOfUsers + 1 == numberOfUsers();
+        return bankDatabase.addBankUser(bankUser);
     }
 
     public boolean createAccountFor(BankUser bankUser, String accountType) {
-        if (!database.containsKey(bankUser)) {
-            return false;
-        }
-
-        int oldNumberOfAccounts = database.get(bankUser) != null ? database.get(bankUser).size() : 0;
-        database.get(bankUser).add(new BankAccount(accountType));
-
-        return oldNumberOfAccounts + 1 == database.get(bankUser).size();
+        return bankDatabase.createAccountFor(bankUser, accountType);
     }
 
     public List<BankAccount> getAccountsOf(BankUser bankUser) {
-        return database.get(bankUser);
+        return bankDatabase.getAccountsOf(bankUser);
     }
 
     public int numberOfUsers() {
-        return database.size();
+        return bankDatabase.numberOfUsers();
+    }
+
+    public BankAccount getAccountOfType(String accountType) {
+        return bankDatabase.getAccountOfType(accountType);
     }
 }

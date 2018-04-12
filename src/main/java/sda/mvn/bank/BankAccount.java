@@ -6,7 +6,7 @@ public class BankAccount {
 
     private String id;
     private String type;
-    private int ammount;
+    private int amount;
 
     public BankAccount(String type) {
         this.type = type;
@@ -28,12 +28,12 @@ public class BankAccount {
         this.type = type;
     }
 
-    public int getAmmount() {
-        return ammount;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setAmmount(int ammount) {
-        this.ammount = ammount;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override
@@ -41,13 +41,19 @@ public class BankAccount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BankAccount that = (BankAccount) o;
-        return ammount == that.ammount &&
+        return amount == that.amount &&
                 Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, ammount);
+        return Objects.hash(id, amount);
+    }
+
+    public static BankAccount instanceOf(String type, int amount) {
+        BankAccount bankAccount = new BankAccount(type);
+        bankAccount.amount = amount;
+        return bankAccount;
     }
 }
