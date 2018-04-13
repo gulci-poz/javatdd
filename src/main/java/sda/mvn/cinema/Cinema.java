@@ -35,7 +35,22 @@ public class Cinema {
             return failureResponse;
         }
 
-        cinemaNotifier.notify(cinemaUser, cinemaChannel, "ticket_number");
+        CinemaNotifierResponse response = cinemaNotifier.notify(cinemaUser, cinemaChannel, "ticket_number");
+        if (!response.isStatus()) {
+            CinemaBookingResponse cinemaBookingResponse = new CinemaBookingResponse();
+            cinemaBookingResponse.setStatus(false);
+
+            switch (response.getStatusCode()) {
+                case SERVER_ERROR:
+                    cinemaBookingResponse.setMessage("ticket cannot be sent");
+                    break;
+                case CHANNEL_NOT_SPECIFIED:
+                    cinemaBookingResponse.setMessage("no address data");
+                    break;
+            }
+
+            return cinemaBookingResponse;
+        }
 
         return new CinemaBookingResponse(true, "Seating succesfully booked");
     }
